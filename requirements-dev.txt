@@ -1,0 +1,2 @@
+mockito >= 1.2.1
+setuptools >= 46.1.1

@@ -1,0 +1,8 @@
+[run]
+omit = venv/
+
+[paths]
+source = togglz/
+
+[html]
+directory = target/report/

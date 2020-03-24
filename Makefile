@@ -2,7 +2,8 @@ TOP_DIR := ${PWD}
 
 test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
-	python3 -m unittest discover --verbose --start-directory ${TOP_DIR}/tests --pattern '*_test.py'
+	coverage run -m unittest discover --verbose --start-directory ${TOP_DIR}/tests --pattern '*_test.py'
+	coverage report -m
 
 build:	init
 

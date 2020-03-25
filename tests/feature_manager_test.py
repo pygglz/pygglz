@@ -15,6 +15,6 @@ class FeatureManagerTest(unittest.TestCase):
         self.assertIsNone(self.manager.get_feature_state("NON_EXISTENT"))
 
     def __given_a_manager_with_repo(self, features):
-        self.repo = mock()
-        when(self.repo).load_features().thenReturn({k: FeatureState(name=k, enabled=v) for k, v in features.items()})
-        self.manager = FeatureManager(repository=self.repo)
+        repo = mock()
+        when(repo).get_feature_states().thenReturn({k: FeatureState(name=k, enabled=v) for k, v in features.items()})
+        self.manager = FeatureManager(state_repository=repo)

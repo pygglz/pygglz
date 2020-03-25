@@ -1,11 +1,11 @@
 from .feature_manager import FeatureManager
-from .feature_repository import FeatureRepository
 from .feature_state import FeatureState
+from .state_repository import StateRepository
 
 
 class FeatureContext(object):
     def __init__(self, feature_manager: FeatureManager = None):
-        self.feature_manager = feature_manager or FeatureManager(repository=FeatureRepository())
+        self.feature_manager = feature_manager or FeatureManager(state_repository=StateRepository())
 
     def configure(self, feature_manager: FeatureManager = None):
         if feature_manager is not None:

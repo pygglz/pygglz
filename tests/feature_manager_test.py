@@ -2,8 +2,8 @@ import unittest
 
 from mockito import mock, when
 
-from togglz.feature_manager import FeatureManager
-from togglz.feature_state import FeatureState
+from pygglz.feature_manager import FeatureManager
+from pygglz.feature_state import FeatureState
 
 
 class FeatureManagerTest(unittest.TestCase):

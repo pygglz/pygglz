@@ -1,4 +1,4 @@
-# [togglz](https://github.com/cbuschka/python-togglz)
+# [pygglz](https://github.com/cbuschka/pygglz)
 
 ### A feature toggle library designed after Java togglz
 

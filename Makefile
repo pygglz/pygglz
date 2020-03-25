@@ -24,4 +24,4 @@ cleanall:	clean
 	rm -rf venv/
 
 clean:
-	rm -rf .coverage build/ dist/ togglz.egg-info/
+	rm -rf .coverage build/ dist/ *.egg-info/

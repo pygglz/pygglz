@@ -1,6 +1,6 @@
 import unittest
 
-from togglz.feature_state import FeatureState
+from pygglz.feature_state import FeatureState
 
 
 class FeatureTest(unittest.TestCase):

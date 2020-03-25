@@ -2,7 +2,7 @@ import unittest
 
 from mockito import mock, when
 
-from togglz.feature_context import FeatureContext
+from pygglz.feature_context import FeatureContext
 
 
 class FeatureContextTest(unittest.TestCase):

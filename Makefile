@@ -22,4 +22,4 @@ cleanall:	clean
 	rm -rf venv/
 
 clean:
-	rm -rf .coverage venv/ dist/ pytogglz.egg-info/
+	rm -rf .coverage venv/ dist/ togglz.egg-info/

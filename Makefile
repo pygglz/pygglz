@@ -18,5 +18,8 @@ init:
 	source ${TOP_DIR}/venv/bin/activate && \
 	pip install -r requirements.txt -r requirements-dev.txt
 
+cleanall:	clean
+	rm -rf venv/
+
 clean:
 	rm -rf .coverage venv/ dist/ pytogglz.egg-info/

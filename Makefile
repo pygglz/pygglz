@@ -7,7 +7,7 @@ test:	build
 
 dist:	test
 	source ${TOP_DIR}/venv/bin/activate && \
-	python3 ./setup.py sdist
+	python3 ./setup.py sdist bdist_wheel
 
 build:	init
 

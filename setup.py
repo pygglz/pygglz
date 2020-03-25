@@ -4,7 +4,7 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pytogglz",
+    name="togglz",
     version="0.0.1",
     author="Cornelius Buschka",
     author_email="cbuschka@gmail.com",

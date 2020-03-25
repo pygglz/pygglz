@@ -1,11 +1,11 @@
 import unittest
 
-from togglz.feature import Feature
+from togglz.feature_state import FeatureState
 
 
 class FeatureTest(unittest.TestCase):
     def test_init(self):
-        f = Feature("Enabled", True)
+        f = FeatureState("Enabled", True)
 
         self.assertEqual("Enabled", f.name)
         self.assertTrue(f.enabled)

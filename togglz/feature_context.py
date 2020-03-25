@@ -1,6 +1,6 @@
-from .feature import Feature
 from .feature_manager import FeatureManager
 from .feature_repository import FeatureRepository
+from .feature_state import FeatureState
 
 
 class FeatureContext(object):
@@ -15,11 +15,11 @@ class FeatureContext(object):
         return self.is_feature_enabled(item)
 
     def is_feature_enabled(self, name: str):
-        feature = self.feature_manager.get_feature(name)
+        feature = self.feature_manager.get_feature_state(name)
         if feature is None:
             return False
         return feature.enabled
 
-    def get_feature(self, name: str):
-        feature = self.feature_manager.get_feature(name)
-        return feature or Feature(name, False)
+    def get_feature_state(self, name: str) -> FeatureState:
+        feature = self.feature_manager.get_feature_state(name)
+        return feature or FeatureState(name, False)

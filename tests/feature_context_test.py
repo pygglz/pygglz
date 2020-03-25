@@ -16,8 +16,8 @@ class FeatureContextTest(unittest.TestCase):
     def __given_a_context_with_feature_manager(self, features):
         feature_manager = mock()
         for k, v in features.items():
-            feature = mock()
-            feature.name = k
-            feature.enabled = v
-            when(feature_manager).get_feature(k).thenReturn(feature)
+            feature_state = mock()
+            feature_state.name = k
+            feature_state.enabled = v
+            when(feature_manager).get_feature_state(k).thenReturn(feature_state)
         self.context = FeatureContext(feature_manager=feature_manager)

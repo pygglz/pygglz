@@ -1,2 +1,6 @@
 /.coverage
 /venv/
+/build/
+/dist/
+/togglz.egg-info/
+

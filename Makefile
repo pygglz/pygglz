@@ -5,6 +5,8 @@ test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
 	coverage run -m unittest discover --verbose --start-directory ${TOP_DIR}/tests --pattern '*_test.py'
 
+tests:	test
+
 dist:	test
 	source ${TOP_DIR}/venv/bin/activate && \
 	python3 ./setup.py sdist bdist_wheel

@@ -1,6 +1,8 @@
 from .feature_context import FeatureContext
 from .feature_manager import FeatureManager
 
-features = FeatureContext()
+_root_context = FeatureContext()
 
-configure = features.configure
+features = _root_context
+
+configure = _root_context.configure

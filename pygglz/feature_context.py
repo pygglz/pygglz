@@ -1,25 +1,16 @@
-from .feature_manager import FeatureManager
 from .feature_state import FeatureState
 from .state_repository import StateRepository
 
 
 class FeatureContext(object):
-    def __init__(self, feature_manager: FeatureManager = None):
-        self.feature_manager = feature_manager or FeatureManager(state_repository=StateRepository())
+    def __init__(self, state_repository: StateRepository):
+        self.state_repository = state_repository
+        self._feature_states = state_repository.get_feature_states()
 
-    def configure(self, feature_manager: FeatureManager = None):
-        if feature_manager is not None:
-            self.feature_manager = feature_manager
-
-    def __getattr__(self, item):
-        return self.is_feature_enabled(item)
-
-    def is_feature_enabled(self, name: str):
-        feature = self.feature_manager.get_feature_state(name)
-        if feature is None:
-            return False
-        return feature.enabled
+    def __getitem__(self, item):
+        return self.get_feature_state(item).enabled
 
     def get_feature_state(self, name: str) -> FeatureState:
-        feature = self.feature_manager.get_feature_state(name)
-        return feature or FeatureState(name, False)
+        return self._feature_states.get(name, None) \
+               or self.state_repository.get_feature_state(name) \
+               or FeatureState(name, False)

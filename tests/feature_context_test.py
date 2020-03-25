@@ -9,15 +9,16 @@ class FeatureContextTest(unittest.TestCase):
     def test_delegates_to_manager(self):
         self.__given_a_context_with_feature_manager({"ENABLED": True, "DISABLED": False})
 
-        self.assertTrue(self.context.ENABLED)
-        self.assertFalse(self.context.DISABLED)
-        self.assertFalse(self.context.NON_EXISTENT)
+        self.assertTrue(self.context["ENABLED"])
+        self.assertFalse(self.context["DISABLED"])
+        self.assertFalse(self.context["NON_EXISTENT"])
 
     def __given_a_context_with_feature_manager(self, features):
-        feature_manager = mock()
+        state_repository = mock()
         for k, v in features.items():
             feature_state = mock()
             feature_state.name = k
             feature_state.enabled = v
-            when(feature_manager).get_feature_state(k).thenReturn(feature_state)
-        self.context = FeatureContext(feature_manager=feature_manager)
+            when(state_repository).get_feature_state(k).thenReturn(feature_state)
+        when(state_repository).get_feature_states().thenReturn({})
+        self.context = FeatureContext(state_repository)

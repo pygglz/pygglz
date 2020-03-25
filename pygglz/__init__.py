@@ -1,8 +1,15 @@
+from .context_locator import ContextLocator
 from .feature_context import FeatureContext
-from .feature_manager import FeatureManager
+from .features import Features
+from .state_repository import StateRepository
 
-_root_context = FeatureContext()
+_global_state_repository = StateRepository()
+_global_context = FeatureContext(_global_state_repository)
+_context_locator = ContextLocator(_global_context)
 
-features = _root_context
+features = Features(_context_locator)
 
-configure = _root_context.configure
+
+def configure(state_repository: StateRepository = None):
+    if state_repository:
+        _global_context.state_repository = state_repository

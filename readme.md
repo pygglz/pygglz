@@ -1,4 +1,4 @@
-# [pygglz](https://github.com/cbuschka/pygglz) ![Written in Python](https://img.shields.io/badge/python-3.6%203.7%203.8-blue.svg) [![Build Status](https://travis-ci.org/cbuschka/pygglz.svg?branch=master)](https://travis-ci.org/cbuschka/pygglz) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/cbuschka/pygglz/blob/master/license.txt)
+# [pygglz](https://github.com/cbuschka/pygglz) ![Written in Python](https://img.shields.io/badge/python-3.6,%203.7,%203.8-blue.svg) [![Build Status](https://travis-ci.org/cbuschka/pygglz.svg?branch=master)](https://travis-ci.org/cbuschka/pygglz) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/cbuschka/pygglz/blob/master/license.txt)
 
 ### A feature toggle library designed after Java togglz
 

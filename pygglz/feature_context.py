@@ -11,6 +11,8 @@ class FeatureContext(object):
                  context_locator: ContextLocator = None,
                  snapshot: bool = True,
                  read_only: bool = True):
+        self.read_only = read_only
+        self.state_repository = state_repository
         self.context_locator = context_locator
         self.configure(state_repository, snapshot, read_only)
 
@@ -19,9 +21,10 @@ class FeatureContext(object):
                   read_only: bool = True):
         self.read_only = read_only
         self.state_repository = state_repository
-        self.feature_states = state_repository
         if snapshot:
             self.feature_states = FeatureSnapshot(state_repository)
+        else:
+            self.feature_states = state_repository
 
     def __getitem__(self, item):
         return self.is_feature_active(item)
@@ -40,7 +43,7 @@ class FeatureContext(object):
     def set_feature_state(self, feature_state: FeatureState) -> None:
         if self.read_only:
             raise RuntimeError("Feature context is read only.")
-        self.feature_states.set_feature_state(feature_state)
+        self.feature_states.set_feature_state(copy(feature_state))
 
     def __enter__(self) -> 'FeatureContext':
         self.context_locator.push_context(self)

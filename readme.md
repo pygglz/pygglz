@@ -2,6 +2,14 @@
 
 ### A feature toggle library designed after Java togglz
 
+## Features
+* Global and thread local feature contexts
+* Feature state snapshots
+
+### Storages for feature state
+* File storage (json)
+* DynamoDB table
+
 ## Installation
 
 ```bash

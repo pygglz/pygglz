@@ -5,6 +5,21 @@
 ## Status
 *Work in Progress*
 
+## Usage
+
+```python
+from pygglz import features, configure
+from pygglz.file_repository import FileRepository
+
+...
+configure(state_repository=FileRepository("/home/app/.features.json"))
+
+...
+
+if features["ONE_CLICK_CHECKOUT"]:
+  ...
+```
+
 ## License
 Copyright (c) 2020 by [Cornelius Buschka](https://github.com/cbuschka).
 

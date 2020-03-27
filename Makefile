@@ -15,7 +15,7 @@ build:	init
 
 init:
 	if [ ! -d "${TOP_DIR}/venv/" ]; then \
-		virtualenv -p python3.7 ${TOP_DIR}/venv/; \
+		virtualenv -p python3 ${TOP_DIR}/venv/; \
 	fi && \
 	source ${TOP_DIR}/venv/bin/activate && \
 	pip install -r requirements.txt -r requirements-dev.txt

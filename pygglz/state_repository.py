@@ -17,7 +17,7 @@ class StateRepository(object):
         pass
 
     def get_feature_names(self) -> list:
-        return [self.feature_states.keys()]
+        return [k for k in self.feature_states.keys()]
 
     def get_feature_states(self) -> dict:
         return deepcopy(self.feature_states)

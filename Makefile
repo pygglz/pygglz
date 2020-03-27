@@ -25,3 +25,7 @@ cleanall:	clean
 
 clean:
 	rm -rf .coverage build/ dist/ *.egg-info/
+
+upload:	dist
+	cd ${TOP_DIR} && \
+	twine upload dist/*	

@@ -16,9 +16,6 @@ class StateRepository(object):
         """to be implemented"""
         pass
 
-    def get_feature_names(self):
-        return [k for k in self.feature_states.keys()]
-
     def get_feature_states(self) -> dict:
         return deepcopy(self.feature_states)
 

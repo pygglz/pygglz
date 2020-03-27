@@ -15,6 +15,12 @@ class FeatureContext(object):
         self.read_only = read_only
         self.load_feature_states()
 
+    def configure(self, state_repository: StateRepository,
+                  clear=True):
+        self.state_repository = state_repository
+        if clear:
+            self.feature_states = {}
+
     def __getitem__(self, item):
         return self.is_feature_active(item)
 

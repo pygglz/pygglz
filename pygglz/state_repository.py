@@ -6,7 +6,15 @@ from .feature_state import FeatureState
 
 class StateRepository(object):
     def __init__(self):
-        self.feature_states = {}
+        self.feature_states = self.load()
+
+    def load(self) -> dict:
+        """to be implemented"""
+        return {}
+
+    def save(self, feature_state: FeatureState):
+        """to be implemented"""
+        pass
 
     def get_feature_names(self):
         return [k for k in self.feature_states.keys()]
@@ -20,3 +28,4 @@ class StateRepository(object):
 
     def set_feature_state(self, feature_state: FeatureState) -> None:
         self.feature_states[feature_state.name] = copy(feature_state)
+        self.save(feature_state)

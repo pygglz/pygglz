@@ -6,13 +6,16 @@ from .state_repository import StateRepository
 
 class Features(object):
     def __init__(self):
-        self.global_context = FeatureContext(StateRepository(), None, read_only=True, cache=False)
+        self.global_context = FeatureContext(StateRepository(), None,
+                                             snapshot=False,
+                                             read_only=False)
         self.context_locator = ContextLocator(self.global_context)
 
     def configure(self, state_repository: StateRepository = None,
-                  clear=True):
+                  snapshot=False, read_only=False):
         self.global_context.configure(state_repository=state_repository,
-                                      clear=clear)
+                                      snapshot=snapshot,
+                                      read_only=read_only)
 
     def __getitem__(self, item) -> bool:
         return self.is_feature_active(item)
@@ -35,9 +38,10 @@ class Features(object):
         return self.context_locator.peek_context().set_feature_state(feature_state)
 
     def new_feature_context(self, state_repository: StateRepository = None,
-                            read_only: bool = True, cache: bool = True):
+                            read_only: bool = True,
+                            snapshot: bool = True):
         feature_context = self.context_locator.peek_context()
         return FeatureContext(state_repository or feature_context.state_repository,
                               self.context_locator,
-                              cache=cache,
+                              snapshot=snapshot,
                               read_only=read_only)

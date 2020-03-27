@@ -5,6 +5,12 @@ test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
 	coverage run -m unittest discover --verbose --start-directory ${TOP_DIR}/tests --pattern '*_test.py'
 
+all_tests:	test	integration_test
+
+integration_test:	build
+	source ${TOP_DIR}/venv/bin/activate && \
+	coverage run -m unittest discover --verbose --start-directory ${TOP_DIR}/integration_tests --pattern '*_test.py'
+
 tests:	test
 
 dist:	test

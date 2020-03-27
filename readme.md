@@ -2,8 +2,11 @@
 
 ### A feature toggle library designed after Java togglz
 
-## Status
-*Work in Progress*
+## Installation
+
+```bash
+pip install pygglz
+```
 
 ## Usage
 

@@ -18,7 +18,7 @@ init:
 		virtualenv -p python3 ${TOP_DIR}/venv/; \
 	fi && \
 	source ${TOP_DIR}/venv/bin/activate && \
-	pip install -r requirements.txt -r requirements-dev.txt
+	pip install -r requirements.txt -r requirements-opt.txt -r requirements-dev.txt
 
 cleanall:	clean
 	rm -rf venv/

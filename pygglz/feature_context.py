@@ -8,12 +8,11 @@ from .state_repository import StateRepository
 class FeatureContext(object):
     def __init__(self, state_repository: StateRepository,
                  context_locator: ContextLocator = None,
-                 cache_state: bool = True,
-                 read_only: bool = None):
+                 read_only: bool = True):
         self.feature_states = {}
         self.state_repository = state_repository
         self.context_locator = context_locator
-        self.read_only = read_only is not False
+        self.read_only = read_only
         self.load_feature_states()
 
     def __getitem__(self, item):

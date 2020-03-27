@@ -8,7 +8,7 @@ class ContextLocator(object):
 
     def peek_context(self):
         instances = getattr(self.thread_local, "instances", None)
-        if instances is not None:
+        if instances is not None and len(instances) > 0:
             context = instances[-1]
             if context is not None:
                 return context

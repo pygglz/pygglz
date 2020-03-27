@@ -10,8 +10,11 @@ class Features(object):
     def __getitem__(self, item) -> bool:
         return self.is_feature_active(item)
 
+    def get_feature_names(self):
+        return self.context_locator.peek_context().get_feature_names()
+
     def set_feature_enabled(self, name: str, enabled: bool = True):
-        feature_state = self.get_feature_state(name)
+        feature_state = self.get_feature_state(name) or FeatureState(name, enabled)
         feature_state.enabled = enabled
         self.set_feature_state(feature_state)
 

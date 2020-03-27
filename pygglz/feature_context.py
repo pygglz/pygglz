@@ -13,7 +13,6 @@ class FeatureContext(object):
         self.feature_states = {}
         self.state_repository = state_repository
         self.context_locator = context_locator
-        self.cache_state = cache_state
         self.read_only = read_only is not False
         self.load_feature_states()
 
@@ -21,21 +20,24 @@ class FeatureContext(object):
         return self.is_feature_active(item)
 
     def is_feature_active(self, name):
-        return self.get_feature_state(name).enabled
+        feature_state = self.get_feature_state(name)
+        return feature_state is not None and feature_state.enabled
 
     def load_feature_states(self):
-        if not self.cache_state:
-            return
-
         features_states = self.state_repository.get_feature_states()
         for key, value in features_states.items():
             if not key in self.feature_states:
-                self.feature_states[key] = copy(value)
+                self.feature_states[key] = value
+
+    def get_feature_names(self):
+        return [k for k in self.feature_states.keys()]
 
     def get_feature_state(self, name: str) -> FeatureState:
-        return copy(self.feature_states.get(name, None)) \
-               or copy(self.state_repository.get_feature_state(name)) \
-               or FeatureState(name, False)
+        feature_state = self.feature_states.get(name, None) \
+                        or self.state_repository.get_feature_state(name)
+        if feature_state is not None:
+            self.feature_states[name] = feature_state
+        return copy(feature_state)
 
     def set_feature_state(self, feature_state: FeatureState) -> None:
         if self.read_only:

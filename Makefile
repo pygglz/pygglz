@@ -28,4 +28,5 @@ clean:
 
 upload:	dist
 	cd ${TOP_DIR} && \
+	source ${TOP_DIR}/venv/bin/activate && \
 	twine upload dist/*	

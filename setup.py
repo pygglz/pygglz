@@ -11,7 +11,7 @@ setuptools.setup(
     description="A feature toggle library designed after Java togglz",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/cbuschka/pygglz",
+    url="https://github.com/pygglz/pygglz",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

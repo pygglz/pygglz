@@ -32,7 +32,7 @@ cleanall:	clean
 clean:
 	rm -rf .coverage build/ dist/ *.egg-info/
 
-upload:	dist
+upload:	clean dist
 	cd ${TOP_DIR} && \
 	source ${TOP_DIR}/venv/bin/activate && \
 	twine upload dist/*	

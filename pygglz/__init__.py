@@ -1,4 +1,5 @@
 from .features import Features
+from .file_repository import FileRepository
 
 features = Features()
 configure = features.configure

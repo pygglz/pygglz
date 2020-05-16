@@ -1,3 +1,4 @@
+from .dummy_repository import DummyRepository
 from .features import Features
 from .file_repository import FileRepository
 

@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
     name="pygglz",
-    version="0.0.4.dev",
+    version="0.0.4",
     author="Cornelius Buschka",
     author_email="cbuschka@gmail.com",
     description="A feature toggle library designed after Java togglz",

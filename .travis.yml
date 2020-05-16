@@ -1,3 +1,4 @@
+sudo: false
 language: python
 python:
   - "3.6"
@@ -7,4 +8,4 @@ script:
   - make tests
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov

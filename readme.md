@@ -18,11 +18,28 @@ pip install pygglz
 
 ## Usage
 
+### Features from local JSON file
+
 ```python
 from pygglz import features, FileRepository
 
 ...
 pygglz.configure(state_repository=FileRepository("/home/app/.features.json"))
+
+...
+
+if features["ONE_CLICK_CHECKOUT"]:
+  ...
+```
+
+### Features from DynamoDB table "features"
+
+```python
+from pygglz import features
+from pygglz.dynamodb import DynamodbRepository
+
+...
+pygglz.configure(state_repository=DynamodbRepository())
 
 ...
 

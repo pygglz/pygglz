@@ -19,11 +19,10 @@ pip install pygglz
 ## Usage
 
 ```python
-from pygglz import features, configure
-from pygglz.file_repository import FileRepository
+from pygglz import features, FileRepository
 
 ...
-configure(state_repository=FileRepository("/home/app/.features.json"))
+pygglz.configure(state_repository=FileRepository("/home/app/.features.json"))
 
 ...
 

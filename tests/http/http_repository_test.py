@@ -5,7 +5,7 @@ import requests
 from mockito import mock
 
 from pygglz.feature_state import FeatureState
-from pygglz.http_repository import HttpRepository
+from pygglz.http import HttpRepository
 
 
 class HttpRepositoryTest(unittest.TestCase):

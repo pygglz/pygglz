@@ -2,8 +2,8 @@ import json
 
 import requests
 
-from .feature_state import FeatureState
-from .state_repository import StateRepository
+from ..feature_state import FeatureState
+from ..state_repository import StateRepository
 
 
 class HttpRepository(StateRepository):

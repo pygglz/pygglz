@@ -2,7 +2,6 @@
 togglz framework.
 """
 from .features import Features
-from .file_repository import FileRepository
 from .http_repository import HttpRepository
 
 """features This is the global access point to feature state.

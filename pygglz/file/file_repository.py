@@ -1,8 +1,8 @@
 import json
 from os import path
 
-from .feature_state import FeatureState
-from .state_repository import StateRepository
+from ..feature_state import FeatureState
+from ..state_repository import StateRepository
 
 
 class FileRepository(StateRepository):

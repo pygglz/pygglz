@@ -3,7 +3,7 @@ import unittest
 from tempfile import mktemp
 
 from pygglz.feature_state import FeatureState
-from pygglz.file_repository import FileRepository
+from pygglz.file import FileRepository
 
 
 class FileRepositoryTest(unittest.TestCase):

@@ -4,7 +4,7 @@ from tempfile import mktemp
 
 from pygglz.feature_state import FeatureState
 from pygglz.features import Features
-from pygglz.file_repository import FileRepository
+from pygglz.file import FileRepository
 
 
 class FeaturesFileIntegrationTest(unittest.TestCase):

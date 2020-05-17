@@ -22,7 +22,8 @@ pip install pygglz
 ### Features from local JSON file
 
 ```python
-from pygglz import features, FileRepository
+from pygglz import features
+from pygglz.file import FileRepository
 
 ...
 pygglz.configure(state_repository=FileRepository("/home/app/.features.json"))

@@ -4,7 +4,7 @@ TOP_DIR := $(shell pwd)
 test:	build
 	cd ${TOP_DIR} && \
 	source ${TOP_DIR}/venv/bin/activate && \
-	coverage run -m unittest discover --verbose -t ${TOP_DIR} -s tests --pattern '*_test.py'
+	coverage run -m unittest discover --verbose -s tests --pattern '*_test.py'
 
 python36:
 	docker build -f ${TOP_DIR}/Dockerfile.build --build-arg=PYTHON_VERSION=3.6 --tag pygglz-build:3.6 ${TOP_DIR}

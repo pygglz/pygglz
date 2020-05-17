@@ -1,0 +1,13 @@
+ARG PYTHON_VERSION
+
+FROM python:${PYTHON_VERSION}
+
+RUN apt-get update \
+	&& apt-get install -y bash python-virtualenv \
+	&& apt-get clean \
+	&& rm -rf /var/cache/apt/
+WORKDIR /work
+COPY /requirements* /Makefile /work/
+ENV HOME=/work
+RUN make init
+COPY / /work/

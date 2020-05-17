@@ -6,3 +6,6 @@ source = togglz/
 
 [html]
 directory = target/report/
+
+[report]
+omit = tests/*

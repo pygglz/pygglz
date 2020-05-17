@@ -14,7 +14,7 @@ class DynamodbRepositoryTest(unittest.TestCase):
         when(self.dynamodb_resource).Table(self.table_name).thenReturn(self.table)
 
     def test_load(self):
-        when(self.table).scan().thenReturn({"Items": [{"name": "f1", "enabled": True}]})
+        when(self.table).scan().thenReturn({"Items": [{"featureName": "f1", "featureState": {"enabled": True}}]})
         self.repo = DynamodbRepository(dynamodb_resource=self.dynamodb_resource, table_name=self.table_name)
         self.assertTrue(self.repo.get_feature_state("f1").enabled)
 
@@ -22,4 +22,4 @@ class DynamodbRepositoryTest(unittest.TestCase):
         when(self.table).scan().thenReturn({"Items": []})
         self.repo = DynamodbRepository(dynamodb_resource=self.dynamodb_resource, table_name=self.table_name)
         self.repo.set_feature_state(FeatureState("f1", True))
-        verify(self.table).put_item(Item={"name": "f1", "enabled": True})
+        verify(self.table).put_item(Item={"featureName": "f1", "featureState": {"enabled": True}})

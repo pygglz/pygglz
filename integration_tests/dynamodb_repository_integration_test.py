@@ -46,13 +46,13 @@ SCHEMA = {"Tables": {
     "features": {
         "AttributeDefinitions": [
             {
-                "AttributeName": "name",
+                "AttributeName": "featureName",
                 "AttributeType": "S"
             }
         ],
         "KeySchema": [
             {
-                "AttributeName": "name",
+                "AttributeName": "featureName",
                 "KeyType": "HASH"
             }
         ]
@@ -66,11 +66,11 @@ class DynamodbRepositoryIntegrationTest(unittest.TestCase):
         self.local_dynamodb.create_schema(SCHEMA)
 
     def test_get_feature_state(self):
-        self.local_dynamodb.load_items(items={"features": [{"name": "F1", "enabled": True}]})
+        self.local_dynamodb.load_items(items={"features": [{"featureName": "F1", "featureState": {"enabled": True}}]})
         self.repo = DynamodbRepository(self.local_dynamodb.resource)
         self.assertTrue(self.repo.get_feature_state("F1").enabled)
 
     def test_set_feature_state(self):
         self.repo = DynamodbRepository(self.local_dynamodb.resource)
         self.repo.set_feature_state(FeatureState("F1", True))
-        self.local_dynamodb.assert_contains_item(table_name="features", key={"name": "F1"})
+        self.local_dynamodb.assert_contains_item(table_name="features", key={"featureName": "F1"})

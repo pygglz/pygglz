@@ -20,17 +20,17 @@ class DynamodbRepository(StateRepository):
             response = table.scan()
             items = response.get('Items', [])
             for item in items:
-                name = item["name"]
-                enabled = item["enabled"]
-                yield FeatureState(name, enabled)
+                feature_name = item["featureName"]
+                feature_state = item["featureState"]
+                yield FeatureState(feature_name, feature_state.get("enabled", False))
 
             while 'LastEvaluatedKey' in response:
                 response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
                 items = response.get('Items', [])
                 for item in items:
-                    name = item["name"]
-                    enabled = item["enabled"]
-                    yield FeatureState(name, enabled)
+                    feature_name = item["featureName"]
+                    feature_state = item["featureState"]
+                    yield FeatureState(feature_name, feature_state.get("enabled", False))
         except ClientError as e:
             if e.response["Error"]["Code"] != 'ResourceNotFoundException':
                 raise
@@ -38,6 +38,8 @@ class DynamodbRepository(StateRepository):
     def save(self, feature_state):
         table = self.dynamodb_resource.Table(self.table_name)
         table.put_item(Item={
-            "name": feature_state.name,
-            "enabled": feature_state.enabled
+            "featureName": feature_state.name,
+            "featureState": {
+                "enabled": feature_state.enabled
+            }
         })

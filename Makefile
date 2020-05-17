@@ -4,7 +4,7 @@ TOP_DIR := $(shell pwd)
 test:	build
 	cd ${TOP_DIR} && \
 	source ${TOP_DIR}/venv/bin/activate && \
-	coverage run -m unittest discover --verbose -s . --pattern '*_test.py'
+	coverage run -m unittest discover --verbose -t ${TOP_DIR} -s ${TOP_DIR}/tests --pattern '*_test.py'
 
 report: test
 	source ${TOP_DIR}/venv/bin/activate && \
@@ -26,7 +26,7 @@ all_tests:	test	integration_test
 
 integration_test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
-	coverage run -m unittest discover --verbose --start-directory ${TOP_DIR}/integration_tests --pattern '*_test.py'
+	coverage run -m unittest discover --verbose --t ${TOP_DIR} -s ${TOP_DIR}/integration_tests --pattern '*_test.py'
 
 tests:	test
 

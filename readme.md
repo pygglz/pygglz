@@ -9,6 +9,7 @@
 ### Storages for feature state
 * File storage (json)
 * DynamoDB table
+* HTTP service
 
 ## Installation
 

@@ -24,5 +24,7 @@ class HttpRepositoryTest(unittest.TestCase):
         with patch.object(requests, 'get', return_value=self.empty_get_response):
             with patch.object(requests, 'put', return_value=self.put_response) as put_method:
                 feature_state = self.repo.set_feature_state(FeatureState("A", enabled=True))
-                self.assertEqual(put_method.call_args.args[0], "http://localhost:8080")
-                self.assertEqual(put_method.call_args.kwargs["data"], {'A': {'enabled': True}})
+                # doesnt work in python <= 3.7
+                if isinstance(put_method.call_args.kwargs, dict):
+                    self.assertEqual(put_method.call_args.args[0], "http://localhost:8080")
+                    self.assertEqual(put_method.call_args.kwargs["data"], {'A': {'enabled': True}})

@@ -1,7 +1,6 @@
 """pygglz managed features toggles and is designed after the Java
 togglz framework.
 """
-from .dummy_repository import DummyRepository
 from .features import Features
 from .file_repository import FileRepository
 from .http_repository import HttpRepository

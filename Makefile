@@ -6,6 +6,10 @@ test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
 	coverage run -m unittest discover --verbose -s tests --pattern '*_test.py'
 
+report: test
+	source ${TOP_DIR}/venv/bin/activate && \
+	coverage xml
+
 python36:
 	docker build -f ${TOP_DIR}/Dockerfile.build --build-arg=PYTHON_VERSION=3.6 --tag pygglz-build:3.6 ${TOP_DIR}
 	docker run --rm pygglz-build:3.6 make test

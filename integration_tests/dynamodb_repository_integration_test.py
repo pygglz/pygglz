@@ -3,7 +3,7 @@ import unittest
 
 import boto3
 
-from pygglz.dynamodb_repository import DynamodbRepository
+from pygglz.dynamodb import DynamodbRepository
 from pygglz.feature_state import FeatureState
 
 

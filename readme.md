@@ -1,4 +1,4 @@
-# [pygglz](https://github.com/pygglz/pygglz) ![Written in Python](https://img.shields.io/badge/python-3.6,%203.7,%203.8-blue.svg) [![PyPI](https://img.shields.io/pypi/v/pygglz)](https://pypi.org/project/pygglz/) [![Build Status](https://travis-ci.com/pygglz/pygglz.svg?branch=master)](https://travis-ci.com/pygglz/pygglz) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/pygglz/pygglz/blob/master/license.txt)
+# [pygglz](https://github.com/pygglz/pygglz) ![Written in Python](https://img.shields.io/badge/python-3.6,%203.7,%203.8-blue.svg) [![PyPI](https://img.shields.io/pypi/v/pygglz)](https://pypi.org/project/pygglz/) [![Build Status](https://travis-ci.com/pygglz/pygglz.svg?branch=master)](https://travis-ci.com/pygglz/pygglz) [![codecov](https://codecov.io/gh/pygglz/pygglz/branch/master/graph/badge.svg)](https://codecov.io/gh/pygglz/pygglz) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/pygglz/pygglz/blob/master/license.txt)
 
 ### A feature toggle library designed after Java togglz
 

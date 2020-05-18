@@ -6,6 +6,9 @@ test:	build
 	source ${TOP_DIR}/venv/bin/activate && \
 	coverage run -m unittest discover --verbose -t ${TOP_DIR} -s ${TOP_DIR}/tests --pattern '*_test.py'
 
+version:
+	@git describe --dirty --tags
+
 report: test
 	source ${TOP_DIR}/venv/bin/activate && \
 	coverage xml

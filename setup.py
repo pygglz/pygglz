@@ -1,10 +1,22 @@
+import re
 import setuptools
+import subprocess
 
-with open("readme.md", "r", encoding='utf-8') as fh:
-    long_description = fh.read()
+def get_readme():
+    with open("readme.md", "r", encoding='utf-8') as fh:
+        readme = fh.read()
+        return readme
 
-with open("version.txt", 'r', encoding='utf-8') as fh:
-    version = fh.read()
+def get_version():
+    proc = subprocess.Popen(['git', 'describe', '--dirty', '--tags'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    stdout, stderr = proc.communicate()
+    result = re.search('^v([^\n]+)\n$', stdout.decode("utf-8"), re.S)
+    if not result:
+        raise ValueError("Invalid version: '{}'.".format(result))
+    return result.group(1)
+
+version = get_version()
+long_description = get_readme()
 
 setuptools.setup(
     name="pygglz",

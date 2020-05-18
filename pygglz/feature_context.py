@@ -10,21 +10,35 @@ class FeatureContext(object):
     def __init__(self, state_repository: StateRepository,
                  context_locator: ContextLocator = None,
                  snapshot: bool = True,
-                 read_only: bool = True):
+                 read_only: bool = True,
+                 enabled_features: list = None,
+                 disabled_features: list = None):
         self.read_only = read_only
         self.state_repository = state_repository
         self.context_locator = context_locator
-        self.configure(state_repository, snapshot, read_only)
+        self.configure(state_repository, snapshot, read_only,
+                       enabled_features=enabled_features,
+                       disabled_features=disabled_features)
 
     def configure(self, state_repository: StateRepository,
                   snapshot: bool = True,
-                  read_only: bool = True):
+                  read_only: bool = True,
+                  enabled_features: list = None,
+                  disabled_features: list = None):
         self.read_only = read_only
         self.state_repository = state_repository
         if snapshot:
             self.feature_states = FeatureSnapshot(state_repository)
         else:
             self.feature_states = state_repository
+
+        if enabled_features is not None:
+            for f in enabled_features:
+                self.feature_states.set_feature_state(FeatureState(f, enabled=True))
+
+        if disabled_features is not None:
+            for f in disabled_features:
+                self.feature_states.set_feature_state(FeatureState(f, enabled=False))
 
     def __getitem__(self, item):
         return self.is_feature_active(item)

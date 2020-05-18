@@ -39,9 +39,13 @@ class Features(object):
 
     def new_feature_context(self, state_repository: StateRepository = None,
                             read_only: bool = True,
-                            snapshot: bool = True):
+                            snapshot: bool = True,
+                            enabled_features: list = None,
+                            disabled_features: list = None):
         feature_context = self.context_locator.peek_context()
         return FeatureContext(state_repository or feature_context.state_repository,
                               self.context_locator,
                               snapshot=snapshot,
-                              read_only=read_only)
+                              read_only=read_only,
+                              enabled_features=enabled_features,
+                              disabled_features=disabled_features)
